@@ -1,0 +1,91 @@
+﻿@model WebProyecto.Entidades.EmpleadoENT
+
+@{
+    ViewBag.Title = "InsertarEmpleado";
+}
+
+<h2>Insertar Empleado</h2>
+
+
+@using (Html.BeginForm("InsertarEmpleado", "Empleado", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.cedula, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.cedula, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.cedula, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        @Html.Label("Nombre", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        @Html.Label("Dirección", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.direccion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.direccion, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        @Html.Label("Número de teléfono", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.numero, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.numero, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        @Html.Label("Correo electrónico", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.correo_electronico, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.correo_electronico, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        @Html.Label("Salario", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.salario, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.salario, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        @Html.Label("Puesto", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.puesto, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.puesto, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        @Html.Label("Fecha de salida", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.fecha_salida, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.fecha_salida, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Insertar" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

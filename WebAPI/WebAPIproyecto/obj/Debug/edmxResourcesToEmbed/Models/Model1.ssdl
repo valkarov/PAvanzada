@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectoPrograAvanzadaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Administradores">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="rol" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AsignarEmpleadosEventos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idEmpleado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="direccion" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="numero" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="correo_electronico" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DietasAlergiasClientes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idCliente" Type="int" Nullable="false" />
+    <Property Name="tipo" Type="int" Nullable="false" />
+    <Property Name="descripcionDieta" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Empleados">
+    <Key>
+      <PropertyRef Name="cedula" />
+    </Key>
+    <Property Name="cedula" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="direccion" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="numero" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="correo_electronico" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="salario" Type="int" Nullable="false" />
+    <Property Name="puesto" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="fecha_contratacion" Type="date" Nullable="false" />
+    <Property Name="fecha_salida" Type="date" />
+  </EntityType>
+  <EntityType Name="Eventos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="hora" Type="time" Precision="7" Nullable="false" />
+    <Property Name="ubicacion" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="tipoevento" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="idCliente" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="descripcion" Type="varchar(max)" />
+    <Property Name="tipo" Type="int" Nullable="false" />
+    <Property Name="puesto" Type="varchar" MaxLength="255" />
+    <Property Name="precio" Type="int" Nullable="false" />
+    <Property Name="disponibilidad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Suministros">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Cliente">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+    <End Role="DietasAlergiasClientes" Type="Self.DietasAlergiasClientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DietasAlergiasClientes">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpleadoEvento">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+    <End Role="AsignarEmpleadosEventos" Type="Self.AsignarEmpleadosEventos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="cedula" />
+      </Principal>
+      <Dependent Role="AsignarEmpleadosEventos">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventoCliente">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+    <End Role="Eventos" Type="Self.Eventos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Eventos">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="ConsultarEmpleado_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="InsertarEmpleado_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cedula" Type="int" Mode="In" />
+    <Parameter Name="nombre" Type="varchar" Mode="In" />
+    <Parameter Name="direccion" Type="varchar" Mode="In" />
+    <Parameter Name="numero" Type="varchar" Mode="In" />
+    <Parameter Name="correo_electronico" Type="varchar" Mode="In" />
+    <Parameter Name="salario" Type="int" Mode="In" />
+    <Parameter Name="puesto" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_salida" Type="date" Mode="In" />
+  </Function>
+  <EntityContainer Name="ProyectoPrograAvanzadaModelStoreContainer">
+    <EntitySet Name="Administradores" EntityType="Self.Administradores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AsignarEmpleadosEventos" EntityType="Self.AsignarEmpleadosEventos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DietasAlergiasClientes" EntityType="Self.DietasAlergiasClientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Eventos" EntityType="Self.Eventos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Suministros" EntityType="Self.Suministros" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cliente" Association="Self.FK_Cliente">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="DietasAlergiasClientes" EntitySet="DietasAlergiasClientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpleadoEvento" Association="Self.FK_EmpleadoEvento">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="AsignarEmpleadosEventos" EntitySet="AsignarEmpleadosEventos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventoCliente" Association="Self.FK_EventoCliente">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Eventos" EntitySet="Eventos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

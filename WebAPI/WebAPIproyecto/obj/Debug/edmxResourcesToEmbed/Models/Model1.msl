@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProyectoPrograAvanzadaModelStoreContainer" CdmEntityContainer="ProyectoPrograAvanzadaEntities">
+    <EntitySetMapping Name="Administradores">
+      <EntityTypeMapping TypeName="ProyectoPrograAvanzadaModel.Administradores">
+        <MappingFragment StoreEntitySet="Administradores">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="rol" ColumnName="rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AsignarEmpleadosEventos">
+      <EntityTypeMapping TypeName="ProyectoPrograAvanzadaModel.AsignarEmpleadosEventos">
+        <MappingFragment StoreEntitySet="AsignarEmpleadosEventos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="ProyectoPrograAvanzadaModel.Clientes">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="correo_electronico" ColumnName="correo_electronico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DietasAlergiasClientes">
+      <EntityTypeMapping TypeName="ProyectoPrograAvanzadaModel.DietasAlergiasClientes">
+        <MappingFragment StoreEntitySet="DietasAlergiasClientes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="descripcionDieta" ColumnName="descripcionDieta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleados">
+      <EntityTypeMapping TypeName="ProyectoPrograAvanzadaModel.Empleados">
+        <MappingFragment StoreEntitySet="Empleados">
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="correo_electronico" ColumnName="correo_electronico" />
+          <ScalarProperty Name="salario" ColumnName="salario" />
+          <ScalarProperty Name="puesto" ColumnName="puesto" />
+          <ScalarProperty Name="fecha_contratacion" ColumnName="fecha_contratacion" />
+          <ScalarProperty Name="fecha_salida" ColumnName="fecha_salida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Eventos">
+      <EntityTypeMapping TypeName="ProyectoPrograAvanzadaModel.Eventos">
+        <MappingFragment StoreEntitySet="Eventos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+          <ScalarProperty Name="tipoevento" ColumnName="tipoevento" />
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productos">
+      <EntityTypeMapping TypeName="ProyectoPrograAvanzadaModel.Productos">
+        <MappingFragment StoreEntitySet="Productos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="puesto" ColumnName="puesto" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="disponibilidad" ColumnName="disponibilidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suministros">
+      <EntityTypeMapping TypeName="ProyectoPrograAvanzadaModel.Suministros">
+        <MappingFragment StoreEntitySet="Suministros">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ProyectoPrograAvanzadaModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="InsertarEmpleado_SP" FunctionName="ProyectoPrograAvanzadaModel.Store.InsertarEmpleado_SP" />
+    <FunctionImportMapping FunctionImportName="ConsultarEmpleado_SP" FunctionName="ProyectoPrograAvanzadaModel.Store.ConsultarEmpleado_SP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoPrograAvanzadaModel.ConsultarEmpleado_SP_Result">
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="correo_electronico" ColumnName="correo_electronico" />
+          <ScalarProperty Name="salario" ColumnName="salario" />
+          <ScalarProperty Name="puesto" ColumnName="puesto" />
+          <ScalarProperty Name="fecha_contratacion" ColumnName="fecha_contratacion" />
+          <ScalarProperty Name="fecha_salida" ColumnName="fecha_salida" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
