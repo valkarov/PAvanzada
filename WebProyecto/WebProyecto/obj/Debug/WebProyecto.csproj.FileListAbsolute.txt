@@ -104,3 +104,7 @@ C:\Users\Usuario\source\repos\WebProyecto\WebProyecto\obj\Debug\WebProyecto.cspr
 C:\Users\Usuario\source\repos\WebProyecto\WebProyecto\obj\Debug\WebProyecto.csproj.CopyComplete
 C:\Users\Usuario\source\repos\WebProyecto\WebProyecto\obj\Debug\WebProyecto.dll
 C:\Users\Usuario\source\repos\WebProyecto\WebProyecto\obj\Debug\WebProyecto.pdb
+C:\Users\alejandro.aguilar\Desktop\Proyecto\PAvanzada\WebProyecto\WebProyecto\obj\Debug\WebProyecto.csproj.AssemblyReference.cache
+C:\Users\alejandro.aguilar\Desktop\Proyecto\PAvanzada\WebProyecto\WebProyecto\obj\Debug\WebProyecto.csproj.CoreCompileInputs.cache
+C:\Users\alejandro.aguilar\Desktop\Proyecto\PAvanzada\WebProyecto\WebProyecto\obj\Debug\WebProyecto.dll
+C:\Users\alejandro.aguilar\Desktop\Proyecto\PAvanzada\WebProyecto\WebProyecto\obj\Debug\WebProyecto.pdb

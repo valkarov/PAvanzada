@@ -152,12 +152,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
+    <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SuministrosController.cs" />
     <Compile Include="Entidades\EmpleadoENT.cs" />
+    <Compile Include="Entidades\SuministrosENT.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\EmpleadosModel.cs" />
+    <Compile Include="Models\SuministrosModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -180,12 +184,37 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Public\css\plugins.css" />
+    <Content Include="Public\css\style.css" />
+    <Content Include="Public\js\functions.js" />
+    <Content Include="Public\js\jquery.js" />
+    <Content Include="Public\js\plugins.js" />
+    <Content Include="Public\plugins\validate\validate.min.js" />
+    <Content Include="Public\plugins\validate\valildate-rules.js" />
+    <Content Include="Public\webfonts\fa-brands-400.svg" />
+    <Content Include="Public\webfonts\fa-regular-400.svg" />
+    <Content Include="Public\webfonts\fa-solid-900.svg" />
+    <Content Include="Public\webfonts\inspiro-icons.svg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Public\webfonts\fa-brands-400.eot" />
+    <Content Include="Public\webfonts\fa-brands-400.ttf" />
+    <Content Include="Public\webfonts\fa-brands-400.woff" />
+    <Content Include="Public\webfonts\fa-brands-400.woff2" />
+    <Content Include="Public\webfonts\fa-regular-400.eot" />
+    <Content Include="Public\webfonts\fa-regular-400.ttf" />
+    <Content Include="Public\webfonts\fa-regular-400.woff" />
+    <Content Include="Public\webfonts\fa-regular-400.woff2" />
+    <Content Include="Public\webfonts\fa-solid-900.eot" />
+    <Content Include="Public\webfonts\fa-solid-900.ttf" />
+    <Content Include="Public\webfonts\fa-solid-900.woff" />
+    <Content Include="Public\webfonts\fa-solid-900.woff2" />
+    <Content Include="Public\webfonts\inspiro-icons.ttf" />
+    <Content Include="Public\webfonts\inspiro-icons.woff" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -212,6 +241,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Empleado\InsertarEmpleado.cshtml" />
+    <Content Include="Views\Suministros\Suministros.cshtml" />
+    <Content Include="Views\Eventos\Index.cshtml" />
+    <Content Include="Views\Shared\NavBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

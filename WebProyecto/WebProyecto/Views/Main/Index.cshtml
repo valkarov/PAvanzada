@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" /
+    <link rel="icon" type="image/png" href="~/public/images/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Document title -->
+    <title>R&R Gastronomía</title>
+    <!-- Stylesheets & Fonts -->
+    <link href="~/public/css/plugins.css" rel="stylesheet">
+    <link href="~/public/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Body Inner -->
+    <div class="body-inner">
+        <!-- Header -->
+        <header id="header" data-fullwidth="true">
+            <div class="header-inner">
+                <div class="container">
+                    <!--Logo-->
+                    <div id="logo"> <a href="index.html"><span class="logo-default">R&R</span><span class="logo-dark">POLO</span></a> </div>
+                    <!--End: Logo-->
+                    <!--Navigation Resposnive Trigger-->
+                    <div id="mainMenu-trigger">
+                        <a class="lines-button x"><span class="lines"></span></a>
+                    </div>
+                    <!--end: Navigation Resposnive Trigger-->
+                    <!--Navigation-->
+                    <div id="mainMenu">
+                        <div class="container">
+                            <nav>
+                                <ul>
+                                    <li><a href="@Url.Action("Index", "Main")">Inicio</a></li>
+                                    <li><a href="@Url.Action("Index", "Clientes")">Clientes</a></li>
+                                    <li><a href="@Url.Action("Index", "Empleados")">Empleados</a></li>
+                                    <li><a href="@Url.Action("Index", "Eventos")">Eventos</a></li>
+                                    <li><a href="@Url.Action("Index", "Inventario")">Inventario</a></li>
+                                    <li><a href="@Url.Action("Logout", "Login")"><i class="icon-log-out"> </i></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <!--end: Navigation-->
+                </div>
+            </div>
+        </header>
+        <!-- end: Header -->
+        <!-- Page title -->
+        <section id="page-title">
+            <div class="container">
+                <div class="page-title">
+                    <h1>Dashboard</h1>
+                    <span>Analisis de resultados</span>
+                </div>
+            </div>
+        </section>
+        <!-- end: Page title -->
+        <!-- Page Content -->
+        <section id="page-content">
+            <div class="container">
+                <div class="row">
+                    <!-- content -->
+                    <div class="content col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h4>Area charts</h4>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="p-dropdown ml-3 float-right">
+                                    <a class="title btn btn-light"><i class="icon-sliders"></i> Options</a>
+                                    <div class="p-dropdown-content">
+                                        <ul>
+                                            <li>
+                                                <a href="component-charts-chartjs-area-line-boundaries.html">
+                                                    Boundaries
+                                                    (line)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="component-charts-chartjs-area-line-datasets.html">
+                                                    Datasets
+                                                    (line)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="component-charts-chartjs-area-line-stacked.html">
+                                                    Stacked
+                                                    (line)
+                                                </a>
+                                            </li>
+                                            <li><a href="component-charts-chartjs-area-radar.html">Radar</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- chart -->
+                        <div class="row">
+                            <div class="col-lg-6"><canvas id="chart-0" style="min-height: 250px;"></canvas></div>
+                            <div class="col-lg-6"><canvas id="chart-1" style="min-height: 250px;"></canvas></div>
+                            <div class="col-lg-6"><canvas id="chart-2" style="min-height: 250px;"></canvas></div>
+                            <div class="col-lg-6"><canvas id="chart-3" style="min-height: 250px;"></canvas></div>
+                        </div>
+                        <div class="text-center m-t-40 toolbar">
+                            <button class="btn btn-light" onclick="toggleSmooth(this)">Smooth</button>
+                            <button class="btn btn-light" onclick="randomize(this)">Randomize</button>
+                        </div>
+                        <!-- end: chart -->
+                    </div>
+                    <!-- end: content -->
+                </div>
+            </div>
+        </section>
+        <!-- end: Page Content -->
+    </div>
+    <!-- end: Body Inner -->
+    <!-- Scroll top -->
+    <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+    <!--Plugins-->
+    <script src="~/public/js/jquery.js"></script>
+    <script src="~/public/js/plugins.js"></script>
+    <!--Template functions-->
+    <script src="~/public/js/functions.js"></script>
+    <!-- charts.js component-->
+    <script src="~/public/plugins/chartjs/chart.min.js"></script>
+    <script src="~/public/plugins/chartjs/utils.js"></script>
+    <script src="~/public/plugins/moment/moment.min.js"></script>
+    <script>
+        var presets = window.chartColors;
+        var utils = Samples.utils;
+        var inputs = {
+            min: -100,
+            max: 100,
+            count: 8,
+            decimals: 2,
+            continuity: 1
+        };
+
+        function generateData(config) {
+            return utils.numbers(Chart.helpers.merge(inputs, config || {}));
+        }
+
+        function generateLabels(config) {
+            return utils.months(Chart.helpers.merge({
+                count: inputs.count,
+                section: 3
+            }, config || {}));
+        }
+        var options = {
+            maintainAspectRatio: false,
+            spanGaps: false,
+            elements: {
+                line: {
+                    tension: 0.000001
+                }
+            },
+            plugins: {
+                filler: {
+                    propagate: false
+                }
+            },
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        autoSkip: false,
+                        maxRotation: 0
+                    }
+                }]
+            }
+        };
+        [false, 'origin', 'start', 'end'].forEach(function(boundary, index) {
+            // reset the random seed to generate the same data for all charts
+            utils.srand(8);
+            new Chart('chart-' + index, {
+                type: 'line',
+                data: {
+                    labels: generateLabels(),
+                    datasets: [{
+                        backgroundColor: utils.transparentize(presets.red),
+                        borderColor: presets.red,
+                        data: generateData(),
+                        label: 'Dataset',
+                        fill: boundary
+                    }]
+                },
+                options: Chart.helpers.merge(options, {
+                    title: {
+                        text: 'fill: ' + boundary,
+                        display: true
+                    }
+                })
+            });
+        });
+        // eslint-disable-next-line no-unused-vars
+        function toggleSmooth(btn) {
+            var value = btn.classList.toggle('btn-on');
+            Chart.helpers.each(Chart.instances, function(chart) {
+                chart.options.elements.line.tension = value ? 0.4 : 0.000001;
+                chart.update();
+            });
+        }
+        // eslint-disable-next-line no-unused-vars
+        function randomize() {
+            var seed = utils.rand();
+            Chart.helpers.each(Chart.instances, function(chart) {
+                utils.srand(seed);
+                chart.data.datasets.forEach(function(dataset) {
+                    dataset.data = generateData();
+                });
+                chart.update();
+            });
+        }
+    </script>
+</body>
+
+</html>

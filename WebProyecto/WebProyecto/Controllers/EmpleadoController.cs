@@ -13,6 +13,12 @@ namespace WebProyecto.Controllers
         EmpleadosModel model = new EmpleadosModel();
 
         [HttpGet]
+        
+        public ActionResult Index()
+        {
+            return View();
+        }
+        
         public ActionResult InsertarEmpleado()
         {
             return View();
@@ -24,5 +30,7 @@ namespace WebProyecto.Controllers
             model.InsertarEmpleado(e);
             return View();
         }
+
+        
     }
 }
